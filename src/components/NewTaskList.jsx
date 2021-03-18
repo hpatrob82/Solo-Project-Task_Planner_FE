@@ -1,16 +1,48 @@
-import React, { useState } from 'react';
-import NewTask from './NewTask';
+import React, { useState, useEffect } from 'react';
+import { Route, Link, useHistory } from 'react-router-dom';
+import TaskDetails from './TaskDetails';
 
-function NewTaskList() {
+
+
+const NewTaskList = ({reload}) => {
     const [task, setTask] = useState([]);
+const history = useHistory();
+useEffect(() => {
+    (async () => {
+        const tasksData = await fetch('http://127.0.0.1:3333/Tasks').then(response => response.json());
+        console.log('tasksData', tasksData);
+        setTask(tasksData);
+    })();
+},[reload]);
 
-  
+   
     return (
-        <div>
-            <h1> What's the plan for today?</h1>
+        <>
+           {!!task.length ? (
+               <>
+               <Route exact path='/'>
+                   <ul>
+                       {task.map((task, index) => {
+                           return (
+                               <li key={index}>
+                                   <Link to={`/task${task.id}`}>{task.name}</Link>
+                               </li>
+                           );
+                       })}
+                   </ul>
+               </Route>
+               <Route path='/task/:taskID'>
+                   <TaskDetails task={task} />
+                   <button type='button' onClick={() => history.delete()}>Delete</button>
+               </Route>
+               </>
+           ) : (
+               <p>Loading Tasks...</p>
+           )}
             
-        </div>
+        </>
     )
 }
+
 
 export default NewTaskList;
