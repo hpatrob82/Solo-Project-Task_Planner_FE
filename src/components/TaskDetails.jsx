@@ -1,15 +1,15 @@
 import { useParams } from "react-router-dom";
 
-const TaskDetails = ({ task }) => {
-  console.log("task", task);
-  const { taskID } = useParams();
-  console.log("taskID", taskID);
+const TaskDetails = ({ tasks }) => {
+  console.log("tasks", tasks);
+  const { tasks_id } = useParams();
+  console.log("tasks_id", tasks_id);
 
-  const taskNew = task[taskID - 1];
-  console.log("taskNew", taskNew);
+  const taskCheck = tasks[tasks_id - 1];
+  console.log("tasks", tasks);
   return (
     <>
-      <h1>{taskNew.task_name} Was added to your list</h1>
+      <h1>Was added to your list</h1>
     </>
   );
 };

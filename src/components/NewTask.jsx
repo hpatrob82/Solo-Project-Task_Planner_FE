@@ -2,19 +2,20 @@ import React, { useState } from "react";
 
 const NewTask = ({ handleReload }) => {
   const [TaskName, setTaskName] = useState("");
-  // const [removeTaskName, setRemoveTaskName]= useState('')
+  // const [TasksID, seTasksID] = useState('')
   const [submitError, setSubmitError] = useState(null);
 
   const _handleSubmit = async (e) => {
     e.preventDefault();
-    const submitResponse = await fetch("http://127.0.0.1:3333/Tasks", {
+    const submitResponse = await fetch(`http://127.0.0.1:3333/Tasks`, {
       headers: { "Content-type": "application/json" },
       method: "POST",
-      body: JSON.stringify({ task_name: TaskName }),
+      body: JSON.stringify({ task_name: TaskName})
     }).then((response) => response);
     console.log("submit response is,", submitResponse.status);
-    setTaskName("");
-    // setRemoveTaskName('');
+    setTaskName('');
+  
+    
 
     if (submitResponse.status === 200) {
       handleReload(true);
@@ -24,7 +25,11 @@ const NewTask = ({ handleReload }) => {
   };
   const _handleChange = (e) => {
     setTaskName(e.target.value);
+  
   };
+
+  // const _handleClick = async (e) => {   
+  //   const response = await fetch(`http://127.0.0.1:3333/Tasks`)  
 
   return (
     <>

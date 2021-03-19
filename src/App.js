@@ -2,6 +2,7 @@ import './App.css';
 import { BrowserRouter as Router } from 'react-router-dom';
 import NewTask from './components/NewTask';
 import NewTaskList from './components/NewTaskList';
+
 import { useState } from 'react';
 
 
@@ -20,6 +21,7 @@ function App() {
          <NewTask handleReload={handleReload}/>
          <Router>
          <NewTaskList reload={reload}/>
+        
          </Router>
       
    
