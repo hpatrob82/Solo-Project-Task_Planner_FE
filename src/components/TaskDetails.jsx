@@ -6,10 +6,10 @@ const TaskDetails = ({ tasks }) => {
   console.log("tasks_id", tasks_id);
 
   const taskCheck = tasks[tasks_id - 1];
-  console.log("tasks", tasks);
+  console.log("taskCheck", taskCheck);
   return (
     <>
-      <h1>Was added to your list</h1>
+      <h1>{taskCheck.task_id}Was added to your list</h1>
     </>
   );
 };

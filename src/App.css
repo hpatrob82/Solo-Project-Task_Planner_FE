@@ -1,29 +1,77 @@
 * {
+    background-color: rgb(191, 215, 216);
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: medium;
     text-align: center;
 }
 
-body {
-    background: -o-linear-gradient( 90deg, rgb(34, 14, 167) 0%, rgba(100, 115, 255, 1) 100%);
-}
-
-.get-it-done-app {
+.container {
+    background: linear-gradient(to right bottom, #e1b382, #c89666);
+    width: 100%;
+    min-height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: start;
-    width: 520px;
-    min-height: 600;
-    background: blueviolet;
-    text-align: center;
-    margin: 128px auto;
-    padding-bottom: 32px;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-wrapper {
+    background-color: #12343b;
+    min-width: 450px;
+    min-height: 650px;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    box-shadow: 3px 6px 40px #000;
 }
 
 h1 {
+    text-align: center;
     margin: 32px 0;
-    color: blue;
-    font-size: 24px;
+    text-align: center;
+    color: rgb(176, 80, 255);
+    font-size: 32px;
+}
+
+task-input {
+    outline: none;
+    width: 260px;
+    padding: 15px;
+    margin-right: 25px;
+    font-size: 20px;
+    color: cornsilk;
+    background-color: currentColor;
+    border-radius: 10px;
+    border: 1px solid coral;
+}
+
+.button-add {
+    width: 70px;
+    padding: 15px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    border: 0;
+    background-color: coral;
+    cursor: pointer;
+}
+
+.list-item {
+    display: flex;
+    margin: 20px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    max-height: 30px;
+}
+
+.button-complete,
+.button-delete,
+.button-edit {
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 28px;
+    border-radius: 50%;
 }
