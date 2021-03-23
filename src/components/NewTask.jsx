@@ -2,9 +2,9 @@ import React, { useState } from "react";
 
 const NewTask = ({ handleReload }) => {
   const [TaskName, setTaskName] = useState("");
-  // const [TasksID, seTasksID] = useState('')
   const [submitError, setSubmitError] = useState(null);
 
+  
   const _handleSubmit = async (e) => {
     e.preventDefault();
     const submitResponse = await fetch(`http://127.0.0.1:3333/Tasks`, {
@@ -12,7 +12,6 @@ const NewTask = ({ handleReload }) => {
       method: "POST",
       body: JSON.stringify({ task_name: TaskName }),
     }).then((response) => response);
-    console.log("submit response is,", submitResponse.status);
     setTaskName("");
 
     if (submitResponse.status === 200) {
@@ -49,8 +48,9 @@ const NewTask = ({ handleReload }) => {
           {" "}
           Add Task{" "}
         </button>
+        
       </form>
-
+      
     
 
       {!!submitError && <div className="error">{submitError}</div>}
