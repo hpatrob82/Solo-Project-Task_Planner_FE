@@ -4,7 +4,6 @@ const NewTask = ({ handleReload }) => {
   const [TaskName, setTaskName] = useState("");
   const [submitError, setSubmitError] = useState(null);
 
-  
   const _handleSubmit = async (e) => {
     e.preventDefault();
     const submitResponse = await fetch(`http://127.0.0.1:3333/Tasks`, {
@@ -24,7 +23,6 @@ const NewTask = ({ handleReload }) => {
     setTaskName(e.target.value);
   };
 
-
   return (
     <>
       <form onSubmit={_handleSubmit}>
@@ -40,18 +38,14 @@ const NewTask = ({ handleReload }) => {
         </label>
 
         <button
-          type="submit"
-          className="btn btn__primary bn__lg"
+          type="button"
+          className="btn btn-info"
           value={TaskName}
-          onClick={_handleSubmit}
-        >
+          onClick={_handleSubmit}>
           {" "}
           Add Task{" "}
         </button>
-        
       </form>
-      
-    
 
       {!!submitError && <div className="error">{submitError}</div>}
     </>

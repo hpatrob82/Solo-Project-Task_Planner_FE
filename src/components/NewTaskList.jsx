@@ -6,13 +6,14 @@ const NewTaskList = ({ tasks }) => {
     <>
       {!!tasks.length ? (
         <>
-          <ul>
+          <ul className="unordered-list">
             {tasks.map((task, index) => {
               return (
-                <li key={index}>
-                  <Link to={`/tasks/${task.id}`}>{task.task_name}</Link>
-                 
+                
+                <li key={index} class="list-group">
+                  <Link to={`/tasks/${task.id}`} class="list-group-item">{task.task_name} </Link>
                 </li>
+              
               );
             })}
           </ul>
