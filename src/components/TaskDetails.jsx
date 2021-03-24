@@ -9,7 +9,7 @@ const TaskDetails = ({ tasks, handleReload }) => {
 
   const deleteTask = async (task_id) => {
     const response = await fetch(
-      `http://localhost:3333/tasks/delete/${task_id}`,
+      `https://get-it-done-back.herokuapp.com/tasks/delete/${task_id}`,
       {
         method: "DELETE",
       }

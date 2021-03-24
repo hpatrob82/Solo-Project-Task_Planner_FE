@@ -15,7 +15,7 @@ function App() {
   useEffect(() => {
     const fetchTask = async () => {
       const tasksData = await fetch(
-        "http://127.0.0.1:3333/Tasks"
+        "https://get-it-done-back.herokuapp.com/Tasks"
       ).then((response) => response.json());
 
       setTasks(tasksData);

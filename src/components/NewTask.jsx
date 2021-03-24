@@ -6,7 +6,7 @@ const NewTask = ({ handleReload }) => {
 
   const _handleSubmit = async (e) => {
     e.preventDefault();
-    const submitResponse = await fetch(`http://127.0.0.1:3333/Tasks`, {
+    const submitResponse = await fetch(`https://get-it-done-back.herokuapp.com/Tasks`, {
       headers: { "Content-type": "application/json" },
       method: "POST",
       body: JSON.stringify({ task_name: TaskName }),
