@@ -4,42 +4,45 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import NewTask from "./components/NewTask";
 import NewTaskList from "./components/NewTaskList";
 import TaskDetails from "./components/TaskDetails";
+// import ProfilePage from './components/ProfilePage';
+import Menubar from './components/Menubar';
+import SignIn from './components/SignIn';
+
+// import UserProvider from "./providers/UserProvider";
 import './App.css';
 
 
 
 
 function App() {
-  const [tasks, setTasks] = useState([]);
-  const [reload, setReload] = useState(false);
-  useEffect(() => {
-    const fetchTask = async () => {
-      const tasksData = await fetch(
-        "https://get-it-done-back.herokuapp.com/Tasks"
-      ).then((response) => response.json());
+  const { isLoading } = useState("");
 
-      setTasks(tasksData);
-    };
-    fetchTask();
-  }, [reload]);
-  const _handleReload = (status) => {
-    setReload((status) => !status);
-  };
+  if (isLoading) return <div>Loading...</div>
+  
+  
+  
   return (
+   
     <Router>
+ <Menubar />
       <div className="Get it Done App">
        <div class="jumbotron text-center">
 <h1>Get it Done!</h1>
 
        </div>
-
+      
         <Route exact path="/">
-          <NewTask handleReload={_handleReload} />
-
-          <NewTaskList tasks={tasks} />
+        <SignIn path="/signin" />
+     
+        {/* <UserProvider /> */}
+       
         </Route>
+        {/* <ProfilePage /> */}
         <Route path="/tasks/:task_id">
-          <TaskDetails handleReload={_handleReload} tasks={tasks} />
+        <NewTask  />
+
+<NewTaskList  />
+          <TaskDetails />
         </Route>
       </div>
     </Router>
@@ -47,3 +50,4 @@ function App() {
 }
 
 export default App;
+ // "https://get-it-done-back.herokuapp.com/Tasks"

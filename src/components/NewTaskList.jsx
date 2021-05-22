@@ -1,11 +1,29 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from 'react';
+const NewTaskList = () => {
+  const [tasks, setTasks] = useState([]);
+  const [reload, setReload] = useState(false);
+  useEffect(() => {
+    const fetchTask = async () => {
+      const tasksData = await fetch(
+        "http://127.0.0.1/3000/Tasks"
+       
+      ).then((response) => response.json());
 
-const NewTaskList = ({ tasks }) => {
+      setTasks(tasksData);
+    };
+    fetchTask();
+  }, [reload]);
+  const _handleReload = (status) => {
+    setReload((status) => !status);
+  };
+  
   return (
     <>
       {!!tasks.length ? (
         <>
+        <div className="Tasks" onChange={_handleReload}/>
           <ul className="unordered-list">
             {tasks.map((task, index) => {
               return (
